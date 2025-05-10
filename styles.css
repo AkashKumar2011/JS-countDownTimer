@@ -1,0 +1,358 @@
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  body {
+    background: linear-gradient(to right, #003c71, #03604fef);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 1rem;
+    flex-direction: column;
+  }
+
+  .container {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    max-width: 25rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-items: center;
+    
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+  }
+
+  input, select {
+    padding: .5rem 1rem;
+    min-width: 10rem;
+    margin-bottom: 15px;
+    background: #ffffff1a;
+    color: #fff;
+    border: 1px solid #ffffff56;
+    border-radius: 1rem;
+    font-size: 1rem;
+  }
+  .dateTime{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  input::placeholder{
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    /* font-style: italic; */
+  }
+  #timer-name{
+    width: 100%;
+  }
+
+  button {
+    padding: 0.6rem 1.5rem;
+    background-color: #0c3bf8e7;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 1.5vw 0 0 0;
+    font-weight: 600;
+  }
+  .button-center {
+    display: flex;
+    justify-content: center;
+  }
+  
+
+  button:hover {
+    background-color: #0033ffd2;
+  }
+  #timers{
+    width: 100%;
+    display: flex;
+    flex-flow: row-reverse;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .timer-box {
+    background-color: rgba(0, 0, 0, 0.4);
+    margin: 1rem 0;
+    padding: 2vw;
+    border-radius: 1rem;
+    animation: fadeIn 1s ease-in-out;
+    text-align: center;
+    width: 420px;
+  }
+
+  .timer-name {
+    font-size: 3vw;
+    font-weight: 700;
+    margin-bottom: 1.5vw;
+    text-align: center;
+  }
+
+  .countdown {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .countdown div {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 15vmin;
+    background-color: #ffffff26;
+    padding-top: 1rem;
+    border-radius: .5rem;
+    text-align: center;
+
+  }
+
+  .countdown span {
+    display: block;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+.message {
+    margin: -11% 0 10px 24%;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+    background: green;
+    width: 50%;
+    padding: 7px 0;
+    text-align: center;;
+} 
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+.timerTxt{
+    background: #0a0053;
+    border-bottom-left-radius: .5rem;
+    border-bottom-right-radius: 0.5rem;
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 12px !important;
+    padding: 5px 0;
+    font-weight: 300;
+    letter-spacing: 0.7px;
+}
+
+/* White color for date input calendar icon */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  opacity: 1;
+  cursor: pointer;
+  color: #fff;
+}
+
+/* Firefox fix for white icons */
+input[type="date"],
+input[type="time"] {
+  color-scheme: white;
+
+}
+xisting styles remain intact */
+
+#timers {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Timer Box Responsiveness */
+.timer-box {
+  width: 100%;
+  max-width: 480px;
+  flex: 1 1 300px;
+}
+
+
+
+/* Responsive Inputs and Layouts */
+@media screen and (min-width: 768px) {
+  .timer-name {
+    font-size: 2.5rem;
+  }
+  .timer-box{
+    padding: 1.5rem; 
+    width: 100%;
+    max-width: 550px;
+    flex: 1 1 360px; 
+  }
+  .countdown div{
+    min-width: 10vmin;
+  }
+  /* Required for absolute positioning of cancel button */
+.timer-box {
+  border-radius: 5px;
+  position: relative; 
+}
+.cancel-btn {
+  position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #e60000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    /* width: 6px; */
+    height: 34px;
+    cursor: pointer;
+    z-index: 1;
+    line-height: 0;
+    margin: 0px;
+    margin-right: -1px;
+}
+
+}
+
+@media screen and (max-width: 768px) {
+  .timer-name {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .timer-box{
+    padding: 1.5rem; 
+    width: 100%;
+    max-width: 470px;
+    flex: 1 300px; 
+  }
+  .timer-box button {
+    margin-top: 1rem;
+  }
+  .countdown div{
+    min-width: 10vmin;
+  }
+  .container {
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+  .countdown span {
+    font-size: 1.5rem;
+  }
+  input, select, button {
+    font-size: 1rem;
+    width: 100%;
+  }
+  .countdown {
+    gap: 10px;
+  }
+  /* Required for absolute positioning of cancel button */
+.timer-box {
+  border-radius: 5px;
+  position: relative; 
+}
+.cancel-btn {
+  position: absolute;
+    top: -16px;
+    right: 0;
+    background-color: #e60000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 20px;
+    height: 35px;
+    cursor: pointer;
+    z-index: 1;
+    line-height: 0;
+    margin: 0px;
+    margin-right: -1px;
+    padding: 5px 30px 5px 20px;
+}
+
+}
+
+@media screen and (max-width: 600px) {
+  .timer-name {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .timer-box{
+    padding: 1.5rem;  
+    max-width: 480px;
+    flex: 1 1 300px;
+  }
+  .timer-box button {
+    margin-top: 1rem;
+  }
+  .countdown div{
+    min-width: 10vmin;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 2rem;
+  }
+
+  .timer-box {
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+  }
+
+  .timer-name {
+    font-size: 2rem;
+  }
+
+  .countdown div {
+    min-width: 30vmin;
+  }
+    
+  .countdown span {
+    font-size: 1.2rem;
+  }
+
+  .timerTxt {
+    font-size: 10px !important;
+  }
+
+  .dateTime {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #timers {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 300px) {
+  .container {
+    padding: 1rem;
+  }
+}
