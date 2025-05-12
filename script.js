@@ -1,4 +1,5 @@
-timers = [];
+
+let timers = [];
 
 function addTimer() {
   const name = document.getElementById('timer-name').value;
@@ -21,6 +22,7 @@ function addTimer() {
     id,
     name,
     target,
+    remainingTime: null,
     paused: false,
     interval: null
   };
@@ -59,9 +61,9 @@ function removeTimer(id) {
   const timerIndex = timers.findIndex(t => t.id === id);
   if (timerIndex > -1) {
     clearInterval(timers[timerIndex].interval);
-    timers.splice(timerIndex, 1); // Remove from array
+    timers.splice(timerIndex, 1);
     const timerBox = document.getElementById(`timer-${id}`);
-    if (timerBox) timerBox.remove(); // Remove from DOM
+    if (timerBox) timerBox.remove();
   }
 }
 
@@ -69,15 +71,30 @@ function togglePause(id) {
   const timer = timers.find(t => t.id === id);
   if (!timer) return;
 
-  timer.paused = !timer.paused;
-  // const btn = document.querySelector(`#timer-${id} button`);
+  const now = new Date().getTime();
+  const message = document.getElementById(`message-${id}`);
   const btn = document.querySelector(`#timer-${id} .stopBtn`);
-  btn.textContent = timer.paused ? 'Resume' : 'Pause';
 
-  // const message = document.getElementById(`message-${id} .message`);
-  // message.textContent = timer.paused ? "Timer Stop" : "Timer Started";
-  // message.style.background = timer.paused ? "orangered" : "green";
-  // message.style.color = timer.paused ? "yellow" : "white";
+  if (!timer.paused) {
+    // Pause
+    timer.remainingTime = timer.target - now;
+    clearInterval(timer.interval);
+    timer.paused = true;
+    btn.textContent = 'Resume';
+    message.textContent = "Timer Paused";
+    message.style.background = "orangered";
+    message.style.color = "yellow";
+  } else {
+    // Resume
+    timer.target = new Date().getTime() + timer.remainingTime;
+    timer.remainingTime = null;
+    timer.paused = false;
+    btn.textContent = 'Pause';
+    message.textContent = "Timer Resumed";
+    message.style.background = "green";
+    message.style.color = "white";
+    startCountdown(timer);
+  }
 }
 
 function startCountdown(timer) {
@@ -110,4 +127,5 @@ function startCountdown(timer) {
     document.getElementById(`minutes-${timer.id}`).textContent = String(minutes).padStart(2, '0');
     document.getElementById(`seconds-${timer.id}`).textContent = String(seconds).padStart(2, '0');
   }, 1000);
-} 
+}
+
